@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 var klockBackground = LinearGradient(
   colors: [
-    Color(0xffe64c99),
+    Color(0xfffc46aa),
     Color(0xff6262e5),
   ],
-  begin: Alignment.topCenter,
-  end: Alignment.bottomLeft,
+  begin: Alignment.topRight,
+  end: Alignment.bottomRight,
 );
 // Alignment.topCenter, end: Alignment.bottomLeft
 // Color(0xffff00cc),

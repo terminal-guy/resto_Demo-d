@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:resto/Alarm/widgets/add_alarms.dart';
 import 'package:resto/Alarm/widgets/clock_design.dart';
 import 'package:resto/Alarm/widgets/digital_timer.dart';
 import 'package:resto/Alarm/widgets/navigationrow.dart';
+import 'package:resto/Alarm/widgets/FABbutton.dart';
 
 class ClockScreen extends StatefulWidget {
   @override
@@ -19,36 +21,10 @@ class _ClockScreenState extends State<ClockScreen> {
             SizedBox(
               height: 10.0,
             ),
-            Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  SizedBox(
-                    width: 2.0,
-                  ),
-                  TopNavigationRow(
-                    lable: 'Alarm',
-                    icon: Icons.alarm,
-                    ispressed: () {},
-                  ),
-                  TopNavigationRow(
-                    lable: 'Todo',
-                    icon: Icons.playlist_add_check,
-                    ispressed: () {},
-                  ),
-                  TopNavigationRow(
-                    lable: 'Timer',
-                    icon: Icons.shutter_speed,
-                    ispressed: () {},
-                  ),
-                  TopNavigationRow(
-                    lable: 'DashBoard',
-                    icon: Icons.timeline,
-                    ispressed: () {},
-                  ),
-                  SizedBox(
-                    width: 2.0,
-                  )
-                ]),
+            TopNavigationRowFunc(), //GO TO THE NAVIGATION ROW
+            SizedBox(
+              height: 1.0,
+            ),
             Container(
               height: 300,
               width: 500,
@@ -56,6 +32,21 @@ class _ClockScreenState extends State<ClockScreen> {
               child: ClockDesign(),
             ),
             TimerWidget(),
+            SizedBox(
+              height: 15.0,
+            ),
+            Stack(
+              children: <Widget>[
+                AddAlarm(),
+                Positioned(
+                  child: FABbutton(),
+                  bottom: 205,
+                  right: 5,
+                  left: 5,
+                )
+              ],
+              overflow: Overflow.visible,
+            ),
           ],
         ),
       ),

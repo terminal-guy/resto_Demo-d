@@ -1,6 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:resto/constants.dart';
 
+class TopNavigationRowFunc extends StatefulWidget {
+  @override
+  _TopNavigationRowFuncState createState() => _TopNavigationRowFuncState();
+}
+
+class _TopNavigationRowFuncState extends State<TopNavigationRowFunc> {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        SizedBox(
+          width: 2.0,
+        ),
+        TopNavigationRow(
+          lable: 'Alarm',
+          icon: Icons.alarm,
+          ispressed: () {},
+        ),
+        TopNavigationRow(
+          lable: 'Todo',
+          icon: Icons.playlist_add_check,
+          ispressed: () {},
+        ),
+        TopNavigationRow(
+          lable: 'Timer',
+          icon: Icons.shutter_speed,
+          ispressed: () {},
+        ),
+        TopNavigationRow(
+          lable: 'DashBoard',
+          icon: Icons.timeline,
+          ispressed: () {},
+        ),
+        SizedBox(
+          width: 2.0,
+        )
+      ],
+    );
+  }
+}
+
 class TopNavigationRow extends StatelessWidget {
   final IconData icon;
   final String lable;
