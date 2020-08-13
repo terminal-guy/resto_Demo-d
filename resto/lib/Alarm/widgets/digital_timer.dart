@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resto/constants.dart';
 import 'package:slide_digital_clock/slide_digital_clock.dart';
 
 class TimerWidget extends StatelessWidget {
@@ -13,14 +14,14 @@ class TimerWidget extends StatelessWidget {
           color: Color(0xFFf4ecff),
         ),
         hourMinuteDigitTextStyle: TextStyle(
-            color: Colors.purple, fontSize: 50, fontWeight: FontWeight.bold),
+            color: kNavcolour, fontSize: 50, fontWeight: FontWeight.bold),
         amPmDigitTextStyle: TextStyle(
-          color: Colors.purple,
+          color: kNavcolour,
           fontWeight: FontWeight.bold,
         ),
         secondDigitTextStyle: TextStyle(
           fontWeight: FontWeight.bold,
-          color: Colors.purple,
+          color: kNavcolour,
           fontSize: 50,
         ));
   }

@@ -22,6 +22,9 @@ class _ClockScreenState extends State<ClockScreen> {
             Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
+                  SizedBox(
+                    width: 2.0,
+                  ),
                   TopNavigationRow(
                     lable: 'Alarm',
                     icon: Icons.alarm,
@@ -42,6 +45,9 @@ class _ClockScreenState extends State<ClockScreen> {
                     icon: Icons.timeline,
                     ispressed: () {},
                   ),
+                  SizedBox(
+                    width: 2.0,
+                  )
                 ]),
             Container(
               height: 300,

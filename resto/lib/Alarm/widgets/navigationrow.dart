@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resto/constants.dart';
 
 class TopNavigationRow extends StatelessWidget {
   final IconData icon;
@@ -16,17 +17,17 @@ class TopNavigationRow extends StatelessWidget {
     return FlatButton(
         onPressed: ispressed,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Icon(
               icon,
-              color: Colors.purple,
+              color: kNavcolour,
               size: 40.0,
             ),
             Text(
               lable,
               style: TextStyle(
-                color: Colors.purple,
+                color: kNavcolour,
               ),
             )
           ],
