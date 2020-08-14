@@ -35,16 +35,16 @@ class _ClockScreenState extends State<ClockScreen> {
             TimerWidget(),
 
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.only(
-                    right: 13.0,
+                    left: 19.0,
                     top: 10.0,
                   ),
                   child: Icon(
                     Icons.settings,
-                    color: Colors.purple,
+                    color: Color(0xff533779),
                     size: 40.0,
                   ),
                 )
@@ -58,7 +58,7 @@ class _ClockScreenState extends State<ClockScreen> {
                 AddAlarm(),
                 Positioned(
                   child: FABbutton(),
-                  bottom: 205,
+                  bottom: 230,
                   right: 5,
                   left: 5,
                 )
