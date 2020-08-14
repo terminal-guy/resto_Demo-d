@@ -8,8 +8,7 @@ class AddAlarm extends StatefulWidget {
 class _AddAlarmState extends State<AddAlarm> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
+    return Container(
         decoration: BoxDecoration(
           color: Color(0xff533779),
           borderRadius: BorderRadius.only(
@@ -17,12 +16,8 @@ class _AddAlarmState extends State<AddAlarm> {
             topRight: Radius.circular(40.0),
           ),
         ),
-        height: 260,
+        height: MediaQuery.of(context).size.height * 0.355,
         width: 400,
-        child: Column(
-          children: <Widget>[],
-        ),
-      ),
-    );
+        child: Column(children: <Widget>[]));
   }
 }

@@ -23,17 +23,35 @@ class _ClockScreenState extends State<ClockScreen> {
             ),
             TopNavigationRowFunc(), //GO TO THE NAVIGATION ROW
             SizedBox(
-              height: 1.0,
+              height: 20.0,
             ),
             Container(
-              height: 300,
-              width: 500,
               alignment: Alignment.center,
               child: ClockDesign(),
             ),
-            TimerWidget(),
             SizedBox(
-              height: 15.0,
+              height: 30.0,
+            ),
+            TimerWidget(),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(
+                    right: 13.0,
+                    top: 10.0,
+                  ),
+                  child: Icon(
+                    Icons.settings,
+                    color: Colors.purple,
+                    size: 40.0,
+                  ),
+                )
+              ],
+            ),
+            SizedBox(
+              height: 10.0,
             ),
             Stack(
               children: <Widget>[

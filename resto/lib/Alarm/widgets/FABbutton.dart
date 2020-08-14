@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resto/Alarm/widgets/modal_sheet.dart';
 
 class FABbutton extends StatelessWidget {
   @override
@@ -14,7 +15,13 @@ class FABbutton extends StatelessWidget {
           Icons.add,
           color: Colors.white,
         ),
-        onPressed: () {},
+        onPressed: () {
+          showModalBottomSheet(
+              context: context,
+              builder: (context) {
+                return ModalSheet();
+              });
+        },
       ),
     );
   }

@@ -13,3 +13,8 @@ var klockBackground = LinearGradient(
 //   Color(0xff333399),
 
 var kNavcolour = Color(0xff533779);
+
+var kNumberText = TextStyle(
+  color: Color(0xFF533779),
+  fontSize: 25.0,
+);

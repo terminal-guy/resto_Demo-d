@@ -16,6 +16,11 @@ class _TopNavigationRowFuncState extends State<TopNavigationRowFunc> {
           width: 2.0,
         ),
         TopNavigationRow(
+          lable: 'More Apps',
+          icon: Icons.apps,
+          ispressed: () {},
+        ),
+        TopNavigationRow(
           lable: 'Alarm',
           icon: Icons.alarm,
           ispressed: () {},
@@ -28,11 +33,6 @@ class _TopNavigationRowFuncState extends State<TopNavigationRowFunc> {
         TopNavigationRow(
           lable: 'Timer',
           icon: Icons.shutter_speed,
-          ispressed: () {},
-        ),
-        TopNavigationRow(
-          lable: 'DashBoard',
-          icon: Icons.timeline,
           ispressed: () {},
         ),
         SizedBox(
