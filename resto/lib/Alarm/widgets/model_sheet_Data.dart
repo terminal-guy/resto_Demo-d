@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:resto/constants.dart';
 import 'package:numberpicker/numberpicker.dart';
 
+import '../../constants.dart';
+import '../../constants.dart';
+import '../../constants.dart';
+
 int hour = 0;
 int minutes = 0;
 int seconds = 0;
@@ -61,28 +65,6 @@ class _ModelSheetDataState extends State<ModelSheetData> {
               onChanged: (value) {
                 setState(() {
                   minutes = value;
-                });
-              },
-            ),
-          ],
-        ),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(bottom: 15.0, left: 10.0),
-              child: Text(
-                'Seconds',
-                style: kNumberText.copyWith(fontSize: 25.0),
-              ),
-            ),
-            NumberPicker.integer(
-              initialValue: seconds,
-              minValue: 0,
-              maxValue: 60,
-              onChanged: (value) {
-                setState(() {
-                  seconds = value;
                 });
               },
             ),

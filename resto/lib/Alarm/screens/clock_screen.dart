@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:resto/Alarm/widgets/add_alarms.dart';
+import 'package:resto/Alarm/screens/alarm_screen.dart';
 import 'package:resto/Alarm/widgets/clock_design.dart';
 import 'package:resto/Alarm/widgets/digital_timer.dart';
 import 'package:resto/Alarm/widgets/navigationrow.dart';

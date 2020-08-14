@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resto/Alarm/widgets/alarm_List.dart';
 
 class AddAlarm extends StatefulWidget {
   @override
@@ -18,9 +19,9 @@ class _AddAlarmState extends State<AddAlarm> {
       ),
       height: MediaQuery.of(context).size.height * 0.355,
       width: 400,
-      child: Column(
-        children: <Widget>[],
-      ),
+      child: ListView(
+        children: ,
+      )
     );
   }
 }
