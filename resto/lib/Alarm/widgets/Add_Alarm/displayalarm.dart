@@ -44,6 +44,7 @@ class DisplayAlarm extends StatelessWidget {
             ),
           ),
           trailing: CupertinoSwitch(
+            // implement alarm on function
             value: switchValue == null ? false : true,
             activeColor: Color(0xFFfe2981),
             // onChanged: switchFunction,

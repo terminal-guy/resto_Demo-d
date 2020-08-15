@@ -35,16 +35,3 @@ class AlarmBottomSheet extends StatelessWidget {
     );
   }
 }
-
-// DisplayAlarm(
-//             alarmTime: alarms[0].time,
-//             alarmTitle: alarms[0].title,
-//           ),
-//           DisplayAlarm(
-//             alarmTime: alarms[1].time,
-//             alarmTitle: alarms[1].title,
-//           ),
-//           DisplayAlarm(
-//             alarmTime: alarms[2].time,
-//             alarmTitle: alarms[2].title,
-//           )

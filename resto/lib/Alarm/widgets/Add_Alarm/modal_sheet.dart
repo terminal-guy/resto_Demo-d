@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:provider/provider.dart';
+import 'package:resto/Alarm/service/alarm_data.dart';
 import 'package:resto/Alarm/widgets/Add_Alarm/model_sheet_Data.dart';
 import 'package:resto/constants.dart';
 
@@ -8,25 +10,10 @@ class ModalSheet extends StatefulWidget {
   _ModalSheetState createState() => _ModalSheetState();
 }
 
-// List<FlatButton> getthehours() {
-//   List<FlatButton> getText = [];
-//   for (var i = 0; i < hours.length; i++) {
-//     String hour = hours[i];
-//     var newitem = FlatButton(
-//         onPressed: () {},
-//         child: Text(
-//           hour,
-//           style: kNumberText,
-//         ));
-
-//     getText.add(newitem);
-//   }
-//   return getText;
-// }
-
 class _ModalSheetState extends State<ModalSheet> {
   @override
   Widget build(BuildContext context) {
+    String newAlarmTitle;
     return Container(
       color: Colors.transparent,
       child: Container(
@@ -42,20 +29,29 @@ class _ModalSheetState extends State<ModalSheet> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            SizedBox(
+              height: 60.0,
+            ),
             Padding(
               padding: EdgeInsets.only(left: 20, right: 20.0),
               child: TextField(
                 decoration: kTextFieldStyle.copyWith(
                   hintText: "Enter Your Alarm Title",
                 ),
+                onChanged: (String value) {
+                  newAlarmTitle = value;
+                  print(newAlarmTitle);
+                },
               ),
-            ),
-            SizedBox(
-              height: 30.0,
             ),
             ModelSheetData(),
             FlatButton(
-              onPressed: () {},
+              onPressed: () {
+                Provider.of<AlarmData>(context, listen: false).getAlarmTime =
+                    newAlarmTitle;
+                print(Provider.of<AlarmData>(context, listen: false)
+                    .getAlarmTime);
+              },
               padding: EdgeInsets.only(
                   top: 15.0, bottom: 15.0, left: 20.0, right: 20.0),
               color: kNavcolour,
@@ -72,37 +68,3 @@ class _ModalSheetState extends State<ModalSheet> {
     );
   }
 }
-
-// List<String> hours = [
-//   '1',
-//   '2',
-//   '3',
-//   '4',
-//   '5',
-//   '6',
-//   '7',
-//   '8',
-//   '9',
-//   '10',
-//   '11',
-//   '12',
-// ];
-
-//  Text('Minutes'),
-//             NumberPicker.integer(
-//               initialValue: minutes,
-//               minValue: 1,
-//               maxValue: 60,
-//               onChanged: (value) {
-//                 minutes = value;
-//               },
-//             ),
-//             Text('seconds'),
-//             NumberPicker.integer(
-//               initialValue: seconds,
-//               minValue: 1,
-//               maxValue: 60,
-//               onChanged: (value) {
-//                 seconds = value;
-//               },
-//             )

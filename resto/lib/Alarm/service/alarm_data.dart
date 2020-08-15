@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:resto/Alarm/classes/alarmclass.dart';
 
+//* THE PROVIDER FOR THE ALARM
 class AlarmData extends ChangeNotifier {
   List<Alarm> alarms = [
     Alarm(
@@ -16,6 +17,8 @@ class AlarmData extends ChangeNotifier {
       title: "for walk",
     ),
   ];
+
+  String getAlarmTime;
 
   int get alarmDatacount {
     return alarms.length;

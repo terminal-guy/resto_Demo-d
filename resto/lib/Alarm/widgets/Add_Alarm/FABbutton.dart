@@ -14,13 +14,22 @@ class FABbutton extends StatelessWidget {
         child: Icon(
           Icons.add,
           color: Colors.white,
+          size: 40.0,
         ),
         onPressed: () {
           showModalBottomSheet(
-              context: context,
-              builder: (context) {
-                return ModalSheet();
-              });
+            context: context,
+            isScrollControlled: true,
+            builder: (context) {
+              return SingleChildScrollView(
+                child: Container(
+                  padding: EdgeInsets.only(
+                      bottom: MediaQuery.of(context).viewInsets.bottom),
+                  child: ModalSheet(),
+                ),
+              );
+            },
+          );
         },
       ),
     );
