@@ -19,5 +19,6 @@ class AlarmData extends ChangeNotifier {
 
   int get alarmDatacount {
     return alarms.length;
-  }
+  } // gets the count of the length in alarm list
+
 }
