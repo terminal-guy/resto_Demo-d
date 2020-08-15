@@ -16,4 +16,8 @@ class AlarmData extends ChangeNotifier {
       title: "for walk",
     ),
   ];
+
+  int get alarmDatacount {
+    return alarms.length;
+  }
 }

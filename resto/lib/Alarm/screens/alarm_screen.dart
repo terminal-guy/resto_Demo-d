@@ -17,16 +17,18 @@ class AlarmBottomSheet extends StatelessWidget {
       ),
       height: MediaQuery.of(context).size.height * 0.355,
       width: 400,
-      child: ListView.builder(
-        itemBuilder: (context, index) {
-          return DisplayAlarm(
-            alarmTime: Provider.of<AlarmData>(context).alarms[index].time,
-            alarmTitle: Provider.of<AlarmData>(context).alarms[index].title,
-            switchValue: Provider.of<AlarmData>(context).alarms[index].isOn,
-          );
-        },
-        itemCount: Provider.of<AlarmData>(context).alarms.length,
-      ),
+      child: Consumer<AlarmData>(builder: (context, alarmData, child) {
+        return ListView.builder(
+          itemBuilder: (context, index) {
+            return DisplayAlarm(
+              alarmTime: alarmData.alarms[index].time,
+              alarmTitle: alarmData.alarms[index].title,
+              switchValue: alarmData.alarms[index].isOn,
+            );
+          },
+          itemCount: alarmData.alarmDatacount,
+        );
+      }),
       // child: ListView(
       //   children: ,
       // )
