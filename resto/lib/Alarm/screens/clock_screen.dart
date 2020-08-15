@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:resto/Alarm/screens/alarm_screen.dart';
-import 'package:resto/Alarm/widgets/clock_design.dart';
-import 'package:resto/Alarm/widgets/digital_timer.dart';
-import 'package:resto/Alarm/widgets/navigationrow.dart';
-import 'package:resto/Alarm/widgets/FABbutton.dart';
+import 'package:resto/Alarm/widgets/Clock/clock_design.dart';
+import 'package:resto/Alarm/widgets/Clock/digital_timer.dart';
+import 'package:resto/Alarm/Navigation/navigationrow.dart';
+import 'package:resto/Alarm/widgets/Add_Alarm/FABbutton.dart'; //fab
 
 class ClockScreen extends StatefulWidget {
   @override
@@ -15,7 +15,9 @@ class _ClockScreenState extends State<ClockScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xFFf4ecff),
+        backgroundColor: Color(
+          0xFFf4ecff,
+        ),
         body: Column(
           children: [
             SizedBox(
@@ -55,7 +57,7 @@ class _ClockScreenState extends State<ClockScreen> {
             ),
             Stack(
               children: <Widget>[
-                AddAlarm(),
+                AlarmBottomSheet(),
                 Positioned(
                   child: FABbutton(),
                   bottom: 230,
