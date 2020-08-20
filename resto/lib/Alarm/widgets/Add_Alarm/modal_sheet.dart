@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
-import 'package:resto/Alarm/service/alarm_data.dart';
+import 'package:resto/Alarm/AlarmData/alarm_data.dart';
 import 'package:resto/Alarm/widgets/Add_Alarm/model_sheet_Data.dart';
 import 'package:resto/constants.dart';
 
@@ -26,44 +26,48 @@ class _ModalSheetState extends State<ModalSheet> {
             bottomRight: Radius.circular(60.0),
           ),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(
-              height: 60.0,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 20, right: 20.0),
-              child: TextField(
-                decoration: kTextFieldStyle.copyWith(
-                  hintText: "Enter Your Alarm Title",
+        child: Consumer<AlarmData>(builder: (
+          context,
+          alarmDataToChange,
+          child,
+        ) {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(
+                height: 60.0,
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 20, right: 20.0),
+                child: TextField(
+                  decoration: kTextFieldStyle.copyWith(
+                    hintText: "Enter Your Alarm Title",
+                  ),
+                  onChanged: (String value) {
+                    newAlarmTitle = value;
+                    alarmDataToChange.changeAlarmTime(newAlarmTitle);
+                  },
                 ),
-                onChanged: (String value) {
-                  newAlarmTitle = value;
-                  print(newAlarmTitle);
+              ),
+              ModelSheetData(),
+              FlatButton(
+                onPressed: () {
+                  // add the alarm to the listtile
+                  alarmDataToChange.addAlarm();
                 },
-              ),
-            ),
-            ModelSheetData(),
-            FlatButton(
-              onPressed: () {
-                Provider.of<AlarmData>(context, listen: false).getAlarmTime =
-                    newAlarmTitle;
-                print(Provider.of<AlarmData>(context, listen: false)
-                    .getAlarmTime);
-              },
-              padding: EdgeInsets.only(
-                  top: 15.0, bottom: 15.0, left: 20.0, right: 20.0),
-              color: kNavcolour,
-              child: Text(
-                'Add Alarm',
-                style: TextStyle(
-                  color: Colors.white,
+                padding: EdgeInsets.only(
+                    top: 15.0, bottom: 15.0, left: 20.0, right: 20.0),
+                color: kNavcolour,
+                child: Text(
+                  'Add Alarm',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
                 ),
-              ),
-            )
-          ],
-        ),
+              )
+            ],
+          );
+        }),
       ),
     );
   }

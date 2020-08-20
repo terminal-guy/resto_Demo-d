@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:resto/Alarm/AlarmData/alarm_data.dart';
 import 'package:resto/constants.dart';
 import 'package:numberpicker/numberpicker.dart';
 
@@ -16,60 +18,64 @@ class ModelSheetData extends StatefulWidget {
 class _ModelSheetDataState extends State<ModelSheetData> {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(
-                bottom: 15.0,
-                right: 5.0,
+    return Consumer<AlarmData>(builder: (context, alarmData, child) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(
+                  bottom: 15.0,
+                  right: 5.0,
+                ),
+                child: Text(
+                  'Hours',
+                  style: kNumberText.copyWith(fontSize: 25.0),
+                ),
               ),
-              child: Text(
-                'Hours',
-                style: kNumberText.copyWith(fontSize: 25.0),
+              NumberPicker.integer(
+                initialValue: hour,
+                minValue: 0,
+                maxValue: 12,
+                onChanged: (value) {
+                  setState(() {
+                    value = hour;
+                  });
+                  alarmData.changethehour(hour.toString());
+                },
               ),
-            ),
-            NumberPicker.integer(
-              initialValue: hour,
-              minValue: 0,
-              maxValue: 12,
-              onChanged: (value) {
-                setState(() {
-                  hour = value;
-                });
-              },
-            ),
-          ],
-        ),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(
-                bottom: 15.0,
+            ],
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(
+                  bottom: 15.0,
+                ),
+                child: Text(
+                  'Minutes',
+                  style: kNumberText.copyWith(fontSize: 25.0),
+                ),
               ),
-              child: Text(
-                'Minutes',
-                style: kNumberText.copyWith(fontSize: 25.0),
+              NumberPicker.integer(
+                initialValue: minutes,
+                minValue: 0,
+                maxValue: 60,
+                onChanged: (value) {
+                  setState(() {
+                    minutes = value;
+                  });
+                  alarmData.changetheminutes(minutes.toString());
+                },
               ),
-            ),
-            NumberPicker.integer(
-              initialValue: minutes,
-              minValue: 0,
-              maxValue: 60,
-              onChanged: (value) {
-                setState(() {
-                  minutes = value;
-                });
-              },
-            ),
-          ],
-        ),
-      ],
-    );
+            ],
+          ),
+        ],
+      );
+    });
   }
 }
 // Row(

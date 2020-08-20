@@ -8,6 +8,7 @@ class FABbutton extends StatelessWidget {
       width: 80.0,
       height: 70.0,
       child: RawMaterialButton(
+        materialTapTargetSize: MaterialTapTargetSize.padded,
         fillColor: Color(0xffff2982),
         shape: CircleBorder(),
         elevation: 15.0,

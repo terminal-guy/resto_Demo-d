@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:resto/Alarm/service/alarm_data.dart';
+import 'package:resto/Alarm/AlarmData/alarm_data.dart';
 import 'package:resto/Alarm/widgets/Add_Alarm/displayalarm.dart';
 import 'package:provider/provider.dart';
 
