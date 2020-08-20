@@ -8,7 +8,7 @@ class Alarm {
   String time;
   String title;
 
-  bool isOn;
+  bool isOn; // it will turn the method on
 
   void toogleOn() {
     isOn = !isOn;

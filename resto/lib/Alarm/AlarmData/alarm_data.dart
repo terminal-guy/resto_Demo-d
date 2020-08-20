@@ -18,8 +18,32 @@ class AlarmData extends ChangeNotifier {
     ),
   ];
 
+  DateTime _needAlarmTime;
+  String _needAlarmtitle;
+
+  // settters..
+
+  set alarmTime(datetime) {
+    _needAlarmTime = datetime;
+    notifyListeners();
+  }
+
+  set alarmTitle(value) {
+    _needAlarmtitle = value;
+    notifyListeners();
+  }
+
+  // getters..
+
+  DateTime get alarmTime => _needAlarmTime;
+  String get alarmTitle => _needAlarmtitle;
+
+  // add alarm... to the list..
+
+  void addAlarm() {}
+
+  // gets the count of the length in alarm list
   int get alarmDatacount {
     return alarms.length;
-  } // gets the count of the length in alarm list
-
+  }
 }

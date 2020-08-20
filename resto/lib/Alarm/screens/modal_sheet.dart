@@ -26,48 +26,53 @@ class _ModalSheetState extends State<ModalSheet> {
             bottomRight: Radius.circular(60.0),
           ),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(
-              height: 60.0,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 20, right: 20.0),
-              child: TextField(
-                decoration: kTextFieldStyle.copyWith(
-                  hintText: "Enter Your Alarm Title",
+        child: Consumer<AlarmData>(
+          builder: (context, alarmtime, child) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(
+                  height: 60.0,
                 ),
-                onChanged: (String value) {
-                  newAlarmTitle = value;
-                },
-              ),
-            ),
-            SizedBox(
-              height: 50,
-            ),
-            ModelSheetData(),
-            SizedBox(
-              height: 50,
-            ),
-            FlatButton(
-              onPressed: () {
-                // add the alarm to the listtile
-              },
-              padding: EdgeInsets.only(
-                  top: 15.0, bottom: 15.0, left: 20.0, right: 20.0),
-              color: kNavcolour,
-              child: Text(
-                'Add Alarm',
-                style: TextStyle(
-                  color: Colors.white,
+                Padding(
+                  padding: EdgeInsets.only(left: 20, right: 20.0),
+                  child: TextField(
+                    decoration: kTextFieldStyle.copyWith(
+                      hintText: "Enter Your Alarm Title",
+                    ),
+                    onChanged: (String value) {
+                      alarmtime.alarmTitle = value;
+                      print(alarmtime.alarmTitle);
+                    },
+                  ),
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 50.0,
-            ),
-          ],
+                SizedBox(
+                  height: 50,
+                ),
+                ModelSheetData(),
+                SizedBox(
+                  height: 50,
+                ),
+                FlatButton(
+                  onPressed: () {
+                    // add the alarm to the listtile
+                  },
+                  padding: EdgeInsets.only(
+                      top: 15.0, bottom: 15.0, left: 20.0, right: 20.0),
+                  color: kNavcolour,
+                  child: Text(
+                    'Add Alarm',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 50.0,
+                ),
+              ],
+            );
+          },
         ),
       ),
     );

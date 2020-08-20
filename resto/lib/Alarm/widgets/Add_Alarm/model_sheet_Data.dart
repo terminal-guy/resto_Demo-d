@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:resto/Alarm/AlarmData/alarm_data.dart';
 import 'package:resto/constants.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
-
-int hour = 0;
-int minutes = 0;
-int seconds = 0;
 
 class ModelSheetData extends StatefulWidget {
   @override
@@ -14,6 +11,8 @@ class ModelSheetData extends StatefulWidget {
 }
 
 class _ModelSheetDataState extends State<ModelSheetData> {
+  String time;
+
   TimeOfDay _time = TimeOfDay.now();
 
   void onTimeChanged(TimeOfDay newTime) {
@@ -24,9 +23,9 @@ class _ModelSheetDataState extends State<ModelSheetData> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AlarmData>(builder: (context, alarmData, child) {
-      return Column(
-        children: [
+    return Consumer<AlarmData>(
+      builder: (context, alarmtime, child) {
+        return Column(children: [
           Container(
             decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
@@ -39,42 +38,46 @@ class _ModelSheetDataState extends State<ModelSheetData> {
                       spreadRadius: 2,
                       offset: Offset(4, 5))
                 ]),
-            child: Column(// modal sheet components...
-                children: <Widget>[
-              ListTile(
-                leading: Icon(Icons.access_alarm),
-                title: Text('Time'),
-                trailing: Icon(Icons.keyboard_arrow_down),
-                onTap: () {
-                  Navigator.of(context).push(
-                    showPicker(
-                      context: context,
-                      value: _time,
-                      onChange: onTimeChanged,
-                      is24HrFormat: false,
-                      // Optional onChange to receive value as DateTime
-                      onChangeDateTime: (DateTime dateTime) {
-                        print(dateTime);
-                      },
-                    ),
-                  );
-                },
-              ),
-              SizedBox(
-                height: 20.0,
-              ),
-              ListTile(
-                leading: Icon(Icons.repeat),
-                title: Text('Repeat'),
-                trailing: Icon(Icons.keyboard_arrow_down),
-              ),
-            ]),
+            child: Column(
+              // modal sheet components...
+              children: <Widget>[
+                ListTile(
+                  leading: Icon(Icons.access_alarm),
+                  title: Text('Time'),
+                  trailing: Icon(Icons.keyboard_arrow_down),
+                  onTap: () {
+                    Navigator.of(context).push(
+                      showPicker(
+                        context: context,
+                        value: _time,
+                        onChange: onTimeChanged,
+                        is24HrFormat: false,
+                        // Optional onChange to receive value as DateTime
+                        onChangeDateTime: (DateTime dateTime) {
+                          dateTime = alarmtime.alarmTime;
+                          print(dateTime);
+                          print(alarmtime.alarmTime);
+                          time = DateFormat.jm().format(dateTime);
+                        },
+                      ),
+                    );
+                  },
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                ListTile(
+                  leading: Icon(Icons.repeat),
+                  title: Text('Repeat'),
+                  trailing: Icon(Icons.keyboard_arrow_down),
+                ),
+              ],
+            ),
           ),
-        ],
-      );
-    });
+        ]);
+      },
+    );
   }
-}
 // Row(
 //           mainAxisAlignment: MainAxisAlignment.center,
 //           crossAxisAlignment: CrossAxisAlignment.center,
@@ -91,3 +94,4 @@ class _ModelSheetDataState extends State<ModelSheetData> {
 //             ),
 //           ],
 //         ),
+}
