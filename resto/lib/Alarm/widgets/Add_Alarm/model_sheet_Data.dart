@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:resto/Alarm/AlarmData/alarm_data.dart';
 import 'package:resto/constants.dart';
-import 'package:numberpicker/numberpicker.dart';
-
-import '../../../constants.dart';
+import 'package:day_night_time_picker/day_night_time_picker.dart';
 
 int hour = 0;
 int minutes = 0;
@@ -16,62 +14,60 @@ class ModelSheetData extends StatefulWidget {
 }
 
 class _ModelSheetDataState extends State<ModelSheetData> {
+  TimeOfDay _time = TimeOfDay.now();
+
+  void onTimeChanged(TimeOfDay newTime) {
+    setState(() {
+      _time = newTime;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<AlarmData>(builder: (context, alarmData, child) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(
-                  bottom: 15.0,
-                  right: 5.0,
-                ),
-                child: Text(
-                  'Hours',
-                  style: kNumberText.copyWith(fontSize: 25.0),
-                ),
-              ),
-              NumberPicker.integer(
-                initialValue: hour,
-                minValue: 0,
-                maxValue: 12,
-                onChanged: (value) {
-                  setState(() {
-                    value = hour;
-                  });
-                  alarmData.changethehour(hour.toString());
+      return Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+                shape: BoxShape.rectangle,
+                color: Color(0xFFf4ecff),
+                borderRadius: BorderRadius.circular(15),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black38,
+                      blurRadius: 8,
+                      spreadRadius: 2,
+                      offset: Offset(4, 5))
+                ]),
+            child: Column(children: <Widget>[
+              ListTile(
+                leading: Icon(Icons.access_alarm),
+                title: Text('Time'),
+                trailing: Icon(Icons.keyboard_arrow_down),
+                onTap: () {
+                  Navigator.of(context).push(
+                    showPicker(
+                      context: context,
+                      value: _time,
+                      onChange: onTimeChanged,
+                      is24HrFormat: false,
+                      // Optional onChange to receive value as DateTime
+                      onChangeDateTime: (DateTime dateTime) {
+                        print(dateTime);
+                      },
+                    ),
+                  );
                 },
               ),
-            ],
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(
-                  bottom: 15.0,
-                ),
-                child: Text(
-                  'Minutes',
-                  style: kNumberText.copyWith(fontSize: 25.0),
-                ),
+              SizedBox(
+                height: 20.0,
               ),
-              NumberPicker.integer(
-                initialValue: minutes,
-                minValue: 0,
-                maxValue: 60,
-                onChanged: (value) {
-                  setState(() {
-                    minutes = value;
-                  });
-                  alarmData.changetheminutes(minutes.toString());
-                },
+              ListTile(
+                leading: Icon(Icons.repeat),
+                title: Text('Repeat'),
+                trailing: Icon(Icons.keyboard_arrow_down),
               ),
-            ],
+            ]),
           ),
         ],
       );

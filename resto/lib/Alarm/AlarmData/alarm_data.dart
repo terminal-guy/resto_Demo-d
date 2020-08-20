@@ -22,32 +22,4 @@ class AlarmData extends ChangeNotifier {
     return alarms.length;
   } // gets the count of the length in alarm list
 
-  String getAlarmTitle;
-
-  String gethours;
-
-  String getminutes;
-
-  void changetheminutes(String minutes) {
-    getminutes = minutes;
-    notifyListeners();
-  }
-
-  void changethehour(String hour) {
-    gethours = hour;
-    notifyListeners();
-  }
-
-  void changeAlarmTime(String newAlarmTitle) {
-    getAlarmTitle = newAlarmTitle;
-    notifyListeners();
-  }
-
-  void addAlarm() {
-    final String gettime = gethours + getminutes;
-    alarms.add(
-      Alarm(title: getAlarmTitle, time: gettime),
-    );
-    notifyListeners();
-  }
 }

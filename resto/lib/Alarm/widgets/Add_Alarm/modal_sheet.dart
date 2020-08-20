@@ -45,15 +45,19 @@ class _ModalSheetState extends State<ModalSheet> {
                   ),
                   onChanged: (String value) {
                     newAlarmTitle = value;
-                    alarmDataToChange.changeAlarmTime(newAlarmTitle);
                   },
                 ),
               ),
+              SizedBox(
+                height: 50,
+              ),
               ModelSheetData(),
+              SizedBox(
+                height: 50,
+              ),
               FlatButton(
                 onPressed: () {
                   // add the alarm to the listtile
-                  alarmDataToChange.addAlarm();
                 },
                 padding: EdgeInsets.only(
                     top: 15.0, bottom: 15.0, left: 20.0, right: 20.0),
