@@ -39,7 +39,8 @@ class _ModelSheetDataState extends State<ModelSheetData> {
                       spreadRadius: 2,
                       offset: Offset(4, 5))
                 ]),
-            child: Column(children: <Widget>[
+            child: Column(// modal sheet components...
+                children: <Widget>[
               ListTile(
                 leading: Icon(Icons.access_alarm),
                 title: Text('Time'),

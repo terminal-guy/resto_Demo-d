@@ -14,9 +14,16 @@ class _ClockDesignState extends State<ClockDesign> {
       height: 200,
       width: 200,
       decoration: BoxDecoration(
-          border: Border.all(width: 2.0, color: Colors.white),
+          // border: Border.all(width: 2.0, color: Colors.white),
           gradient: klockBackground,
-          shape: BoxShape.circle),
+          shape: BoxShape.circle,
+          boxShadow: [
+            BoxShadow(
+                color: Colors.black38,
+                blurRadius: 8,
+                spreadRadius: 2,
+                offset: Offset(7, 10))
+          ]),
       isLive: true,
       hourHandColor: Colors.white,
       minuteHandColor: Colors.white,
