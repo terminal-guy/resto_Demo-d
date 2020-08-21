@@ -3,8 +3,9 @@ class Alarm {
     this.isOn,
     this.time,
     this.description,
+    this.id,
   });
-
+  int id;
   String time;
   String description;
 

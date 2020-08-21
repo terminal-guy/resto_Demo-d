@@ -67,6 +67,7 @@ class DisplayAlarm extends StatelessWidget {
             value: false, //switchValue == null ? false : true,
             activeColor: Color(0xffff2982),
             trackColor: Colors.white30,
+            // TODO had to work on the onchanged...
             // onChanged: switchFunction,
           ),
         ),

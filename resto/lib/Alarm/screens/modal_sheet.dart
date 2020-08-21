@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:resto/Alarm/AlarmData/alarm_data.dart';
 import 'package:resto/Alarm/widgets/Add_Alarm/model_sheet_Data.dart';
 import 'package:resto/constants.dart';
+import 'package:resto/main.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class ModalSheet extends StatefulWidget {
   @override
@@ -58,8 +60,11 @@ class _ModalSheetState extends State<ModalSheet> {
                     if (alarmtime.alarmAMPM != null) {
                       alarmtime.addAlarm();
                       print('getthe alarm');
+                      alarmtime.alarmTitle = null;
+                      alarmtime.alarmAMPM = null;
                       Navigator.pop(context);
                     }
+                    scheduleAlarm();
                   },
                   padding: EdgeInsets.only(
                       top: 15.0, bottom: 15.0, left: 20.0, right: 20.0),
@@ -81,4 +86,31 @@ class _ModalSheetState extends State<ModalSheet> {
       ),
     );
   }
+}
+
+void scheduleAlarm() async {
+  var scheduledNotificationDateTime = DateTime.now().add(Duration(seconds: 10));
+
+  var androidPlatformChannelSpecifics = AndroidNotificationDetails(
+    'alarm_notif',
+    'alarm_notif',
+    'Channel for Alarm notification',
+    icon: 'code_logo',
+    sound: RawResourceAndroidNotificationSound('summer'),
+    largeIcon: DrawableResourceAndroidBitmap('code_logo'),
+  );
+
+  var iOSPlatformChannelSpecifics = IOSNotificationDetails(
+      sound: 'a_long_cold_sting.wav',
+      presentAlert: true,
+      presentBadge: true,
+      presentSound: true);
+  var platformChannelSpecifics = NotificationDetails(
+      androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
+  await flutterLocalNotificationsPlugin.schedule(
+      0,
+      'Office',
+      'Good morning! Time for office.',
+      scheduledNotificationDateTime,
+      platformChannelSpecifics);
 }
