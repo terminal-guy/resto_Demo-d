@@ -22,7 +22,7 @@ class AlarmBottomSheet extends StatelessWidget {
           itemBuilder: (context, index) {
             return DisplayAlarm(
               alarmTime: alarmData.alarms[index].time,
-              alarmTitle: alarmData.alarms[index].title,
+              alarmTitle: alarmData.alarms[index].description,
               switchValue: alarmData.alarms[index].isOn,
             );
           },

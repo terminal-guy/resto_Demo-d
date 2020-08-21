@@ -2,11 +2,11 @@ class Alarm {
   Alarm({
     this.isOn,
     this.time,
-    this.title,
+    this.description,
   });
 
   String time;
-  String title;
+  String description;
 
   bool isOn; // it will turn the method on
 

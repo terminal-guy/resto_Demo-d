@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:resto/Alarm/AlarmData/alarm_data.dart';
-import 'package:resto/constants.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
 
 class ModelSheetData extends StatefulWidget {
@@ -11,7 +10,7 @@ class ModelSheetData extends StatefulWidget {
 }
 
 class _ModelSheetDataState extends State<ModelSheetData> {
-  String time;
+  var time;
 
   TimeOfDay _time = TimeOfDay.now();
 
@@ -48,18 +47,24 @@ class _ModelSheetDataState extends State<ModelSheetData> {
                   onTap: () {
                     Navigator.of(context).push(
                       showPicker(
-                        context: context,
-                        value: _time,
-                        onChange: onTimeChanged,
-                        is24HrFormat: false,
-                        // Optional onChange to receive value as DateTime
-                        onChangeDateTime: (DateTime dateTime) {
-                          dateTime = alarmtime.alarmTime;
-                          print(dateTime);
-                          print(alarmtime.alarmTime);
-                          time = DateFormat.jm().format(dateTime);
-                        },
-                      ),
+                          context: context,
+                          value: _time,
+                          onChange: onTimeChanged,
+                          is24HrFormat: false,
+                          // Optional onChange to receive value as DateTime
+                          onChangeDateTime: (DateTime dateTime) {
+                            // setting the value for the setter
+                            time = DateFormat.jm().format(dateTime);
+
+                            // modified date am time
+                            alarmtime.alarmAMPM = time;
+                            //actually time in datetime
+                            alarmtime.alarmTime = dateTime;
+                            // print(dateTime);
+                            // TODO delete it after finished the application
+                            print(alarmtime.alarmTime);
+                            print(alarmtime.alarmAMPM);
+                          }),
                     );
                   },
                 ),

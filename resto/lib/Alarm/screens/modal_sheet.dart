@@ -13,7 +13,6 @@ class ModalSheet extends StatefulWidget {
 class _ModalSheetState extends State<ModalSheet> {
   @override
   Widget build(BuildContext context) {
-    String newAlarmTitle;
     return Container(
       color: Colors.transparent,
       child: Container(
@@ -44,7 +43,7 @@ class _ModalSheetState extends State<ModalSheet> {
                       alarmtime.alarmTitle = value;
                       print(alarmtime.alarmTitle);
                     },
-                  ),
+                  ), // gets the changed value by provider
                 ),
                 SizedBox(
                   height: 50,
@@ -56,6 +55,11 @@ class _ModalSheetState extends State<ModalSheet> {
                 FlatButton(
                   onPressed: () {
                     // add the alarm to the listtile
+                    if (alarmtime.alarmAMPM != null) {
+                      alarmtime.addAlarm();
+                      print('getthe alarm');
+                      Navigator.pop(context);
+                    }
                   },
                   padding: EdgeInsets.only(
                       top: 15.0, bottom: 15.0, left: 20.0, right: 20.0),

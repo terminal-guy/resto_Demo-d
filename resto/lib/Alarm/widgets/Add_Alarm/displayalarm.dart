@@ -1,3 +1,4 @@
+import 'package:easy_rich_text/easy_rich_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -16,7 +17,7 @@ class DisplayAlarm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String nonvalue = "null";
+    String nonvalue = "------------";
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
@@ -29,26 +30,54 @@ class DisplayAlarm extends StatelessWidget {
             color: Colors.white,
             size: 40.0,
           ),
-          title: Text(
+          title: EasyRichText(
             alarmTime == null ? nonvalue : alarmTime,
-            style: TextStyle(
+            defaultStyle: TextStyle(
               color: Color(0xFFf4ecff),
               fontSize: 40.0,
+              fontWeight: FontWeight.bold,
             ),
+            patternList: [
+              EasyRichTextPattern(
+                targetString: 'AM',
+                style: TextStyle(color: Colors.white54, fontSize: 20.0),
+              ),
+              EasyRichTextPattern(
+                targetString: 'PM',
+                style: TextStyle(color: Colors.white54, fontSize: 20.0),
+              )
+            ],
           ),
+          // title: Text(
+          //   alarmTime == null ? nonvalue : alarmTime,
+          //   style: TextStyle(
+          //     color: Color(0xFFf4ecff),
+          //     fontSize: 40.0,
+          //   ),
+          // ),
           subtitle: Text(
             alarmTitle == null ? nonvalue : alarmTitle,
             style: TextStyle(
-              color: Colors.white70,
+              color: Colors.white54,
               fontSize: 20.0,
             ),
           ),
           trailing: CupertinoSwitch(
             // implement alarm on function
-            value: switchValue == null ? false : true,
-            activeColor: Color(0xFFfe2981),
+            value: false, //switchValue == null ? false : true,
+            activeColor: Color(0xffff2982),
+            trackColor: Colors.white30,
             // onChanged: switchFunction,
           ),
+        ),
+        SizedBox(
+          height: 20.0,
+        ),
+        Divider(
+          thickness: 2,
+          color: Colors.white24,
+          endIndent: 50.0,
+          indent: 50.0,
         )
       ],
     );
