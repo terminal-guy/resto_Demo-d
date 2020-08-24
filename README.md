@@ -1,5 +1,4 @@
 # resto
 #
-// hellooi
-
+# local boot
 # best resot 
